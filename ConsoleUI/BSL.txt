@@ -1,0 +1,30 @@
+Walk it through
+To build a small, two player console game thathas roots in battleship. there will be a 25 spot grid. Each player has 5 ships worth
+that take up one slot.
+----------------
+Open requiremets
+Player 1, 5 ships w/ 1 spot each. 
+Grid(A1-E5) to place ships on
+Grid(A1-E5) to shoot at (player 2)
+All ships of player 2 shot for victory
+
+
+Player 2, 5 ships w/ 1 spot each
+Grid(A1-E5) to place ships on
+Grid(A1-E5) to shoot at (player 1)
+All ships of player 1 shot for victory
+
+Ui Design
+-Console
+Greet player, ask for names.
+Print a grid of 5 by 5.
+Ask for ship placement through grid location.
+Ask for firing placement grid.
+X = ship hit; O = open grid; S = personal ship
+
+
+Logic Design
+
+
+
+Data Design
