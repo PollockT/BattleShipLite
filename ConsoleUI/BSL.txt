@@ -13,7 +13,7 @@ Player 2, 5 ships w/ 1 spot each
 Grid(A1-E5) to place ships on
 Grid(A1-E5) to shoot at (player 1)
 All ships of player 1 shot for victory
-
+-----------------------------
 Ui Design
 -Console
 Greet player, ask for names.
@@ -22,9 +22,39 @@ Ask for ship placement through grid location.
 Ask for firing placement grid.
 X = ship hit; O = open grid; S = personal ship
 
-
+------------------------------------
 Logic Design
+1 shot per, at coordinates, then switch player
 
+place player 1 ships
+place ships based on cordinates
+keep track of location of player 1 ships
+keep track of active ships for player 1
+keep track of destroyed ships for player 1
 
+place player 2 ships
+place ships based on cordinates
+keep track of location of player 2 ships
+keep track of active ships for player 2
+keep track of destroyed ships for player 2
 
-Data Design
+---------------------------------
+Data Design(data needed)
+Player 1 name, player 2 name
+turn number
+
+player 1 ship location
+player 1 active ships
+player 1 destroyed ships
+player 1 hit/miss coordinates
+
+plyyar 2 ship location
+player 2 active ships
+player 2 destroyed ships
+player 2 hit/miss coordinates
+
+Grid(A1-E5) showing player their own ships with active and sunk ships  O=open spot, S=placed ship, D=destroyed ship
+(extra- make optional with delay for switching between player)
+Grid(A1-E5) showing player their shots with hits and misses, O = open spot, X = hit, - = miss
+Label Grid of A1-E5
+Make Key according to grid
