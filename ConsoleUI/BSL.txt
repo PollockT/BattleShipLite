@@ -20,7 +20,10 @@ Greet player, ask for names.
 Print a grid of 5 by 5.
 Ask for ship placement through grid location.
 Ask for firing placement grid.
-X = ship hit; O = open grid; S = personal ship
+Ship placement grid ; D = ship hit; O = open grid; S = personal ship
+Ship attack grid; O = open spot, X = hit, - = miss
+left grid for player's ships, right grid shows attacks, show active player on top
+
 
 ------------------------------------
 Logic Design
@@ -31,12 +34,16 @@ place ships based on cordinates
 keep track of location of player 1 ships
 keep track of active ships for player 1
 keep track of destroyed ships for player 1
+5 ships destroyed means victory for player 2
 
 place player 2 ships
 place ships based on cordinates
 keep track of location of player 2 ships
 keep track of active ships for player 2
 keep track of destroyed ships for player 2
+5 ships destroyed means vicotry for player 1
+
+Determine if game Over
 
 ---------------------------------
 Data Design(data needed)
