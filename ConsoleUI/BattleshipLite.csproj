@@ -52,5 +52,11 @@
   <ItemGroup>
     <Content Include="BSL.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BatteshipLiteLib\BatteshipLiteLib.csproj">
+      <Project>{584fc2ac-3bae-4fd3-81f5-d549308bda0f}</Project>
+      <Name>BatteshipLiteLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

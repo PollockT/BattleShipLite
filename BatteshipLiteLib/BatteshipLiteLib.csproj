@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameLogic.cs" />
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\GridSpotModel.cs" />
     <Compile Include="Models\PlayerInfoModel.cs" />
