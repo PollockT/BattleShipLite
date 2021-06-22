@@ -15,12 +15,109 @@ namespace BattleshipLite
         {
             WelcomeMessage();
 
-            PlayerInfoModel player1 = CreatePlayer("Player 1");
-            PlayerInfoModel player2 = CreatePlayer("Player 2");
-            
+            PlayerInfoModel activePlayer = CreatePlayer("Player 1");
+            PlayerInfoModel oppenent = CreatePlayer("Player 2");
 
-            Console.ReadLine();
-            Environment.Exit(0);
+            PlayerInfoModel winner = null;
+            do
+            {
+                
+                DisplayShotGrid(activePlayer);
+
+                RecordPlayerShot(activePlayer, oppenent);
+
+                bool doesGameContinue = GameLogic.PlayerStillActive(oppenent);
+
+                if (doesGameContinue == true)
+                {
+                    /*temp variable
+                    PlayerInfoModel tempHolder = oppenent;
+                    oppenent = activePlayer;
+                    activePlayer = tempHolder;*/
+
+                    //Use Tuple
+                    (activePlayer, oppenent) = (oppenent, activePlayer);
+
+                }
+                else
+                {
+                    winner = activePlayer;
+                }
+
+            } while (winner == null);
+
+            IdentifyWinner(winner);
+
+            Console.ReadLine();            
+        }
+
+        private static void IdentifyWinner(PlayerInfoModel winner)
+        {
+            Console.WriteLine($"Congratulations to { winner.UserName } for winning!");
+            Console.WriteLine($"{ winner.UserName } took { GameLogic.GetShotCount(winner) } shots.");
+        }
+
+        private static void RecordPlayerShot(PlayerInfoModel activePlayer, PlayerInfoModel oppenent)
+        {
+            bool isValidShot = false;
+            string row = "";
+            int column = 0;
+            do
+            {
+                string shot = AskForShot();
+                (row,  column) = GameLogic.SplitShotIntoRowAndColumn(shot);
+                isValidShot = GameLogic.ValidateShot(activePlayer, row, column);
+
+                if (isValidShot == false)
+                {
+                    Console.WriteLine("Invalid shot location, please try again.");
+                }
+            } while (isValidShot == false);
+
+            
+            bool isAHit = GameLogic.IdentifyShotResults(oppenent, row, column);
+
+            GameLogic.MarkShotResult(activePlayer, row, column, isAHit);
+        }
+
+        private static string AskForShot()
+        {
+            Console.Write("Please enter your shot selection: ");
+            string output = Console.ReadLine();
+            return output;
+        }
+
+        //TODO update grid to be lined up
+        private static void DisplayShotGrid(PlayerInfoModel activePlayer)
+        {
+            string currentRow = activePlayer.ShotGrid[0].SpotLetter;
+
+            foreach (var gridSpot in activePlayer.ShotGrid)
+            {
+                if (gridSpot.SpotLetter != currentRow)
+                {
+                    Console.WriteLine();
+                    currentRow = gridSpot.SpotLetter;
+                }                
+
+                if (gridSpot.Status == GridSpotStatus.Empty)
+                {
+                    Console.Write($"{ gridSpot.SpotLetter }{ gridSpot.SpotNumber }");
+                }   
+                
+                else if(gridSpot.Status == GridSpotStatus.Hit)
+                {
+                    Console.Write(" X ");
+                }
+                else if(gridSpot.Status == GridSpotStatus.Miss)
+                {
+                    Console.Write( " O ");
+                }
+                else
+                {
+                    Console.Write(" ? ");
+                }
+            }
         }
 
         private static void WelcomeMessage()
@@ -69,7 +166,6 @@ namespace BattleshipLite
                     Console.WriteLine("That was an invalid location, please try again.");
                 }
             } while (model.ShipLocations.Count < 5);
-        }
-
+        }     
     }
 }

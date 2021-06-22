@@ -11,5 +11,7 @@ namespace BatteshipLiteLib.Models
         public string UserName { get; set; }
         public List<GridSpotModel> ShipLocations { get; set; } = new List<GridSpotModel>(); // 5 places a ship can be
         public List<GridSpotModel> ShotGrid { get; set; } = new List<GridSpotModel>();
+        
+
     }
 }

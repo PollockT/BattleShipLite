@@ -51,9 +51,39 @@ namespace BatteshipLiteLib
             model.ShotGrid.Add(spot);
         }
 
+        public static bool PlayerStillActive(PlayerInfoModel oppenent)
+        {
+            throw new NotImplementedException();
+        }
+
         public static bool PlaceShip(PlayerInfoModel model, string location)
         {
             // TODO: check ship placement
+            throw new NotImplementedException();
+        }
+
+        public static int GetShotCount(PlayerInfoModel winner)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static (string row, int column) SplitShotIntoRowAndColumn(string shot)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool ValidateShot(PlayerInfoModel activePlayer, string row, int column)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool IdentifyShotResults(PlayerInfoModel oppenent, string row, int column)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static void MarkShotResult(PlayerInfoModel activePlayer, string row, int column, bool isAHit)
+        {
             throw new NotImplementedException();
         }
     }
