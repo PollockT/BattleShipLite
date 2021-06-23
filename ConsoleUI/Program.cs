@@ -31,8 +31,8 @@ namespace BattleshipLite
                 if (doesGameContinue == true)
                 {
                     /*temp variable
-                    PlayerInfoModel tempHolder = oppenent;
-                    oppenent = activePlayer;
+                    PlayerInfoModel tempHolder = opponent;
+                    opponent = activePlayer;
                     activePlayer = tempHolder;*/
 
                     //Use Tuple
@@ -129,17 +129,15 @@ namespace BattleshipLite
         private static PlayerInfoModel CreatePlayer(string playerTitle)
         {
             PlayerInfoModel output = new PlayerInfoModel();
+
             Console.WriteLine($"Player information for {playerTitle}");
-            // TODO: Ask user for name
+
             output.UserName = AskForUserName();
 
-            // TODO: load up the shot grid
             GameLogic.InitializeGrid(output);
 
-            // TODO: ask user for ship placement
             PlaceShips(output);
 
-            // TODO: clear screan
             Console.Clear();
 
             return output;
